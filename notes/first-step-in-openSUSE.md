@@ -154,3 +154,15 @@ libguestfs: command: run: \ -rf /tmp/libguestfs3ESLY7
 正常进入系统。
 
 ##运行
+
+通过脚本启动后，通过`ssh root@localhost -p 22222`并输入密码进入系统。
+
+```
+aldehyde@ubuntu:~/openSUSE-riscv64$ ssh root@localhost -p 22222
+(root@localhost) Password: 
+Last login: Thu Jul 28 07:41:08 UTC 2022 from 10.0.2.2 on ssh
+Have a lot of fun...
+localhost:~ # 
+```
+
+todo: 如何运行用户界面？
