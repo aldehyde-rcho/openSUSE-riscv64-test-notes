@@ -14,4 +14,8 @@ Warning: incomplete repos found but could not refresh - try to refresh manually,
  libreoffice: command not found                            
 localhost:~ # 
 ```
-看来在系统
+
+进一步在 build.opensuse.org 上以libreoffice riscv为关键词搜索，发现一个链接：
+https://build.opensuse.org/project/show/home:Andreas_Schwab:riscv:libreoffice
+
+显示软件包构建失败。logfile部分截图见附件img2。
