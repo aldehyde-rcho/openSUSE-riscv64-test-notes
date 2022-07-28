@@ -1,0 +1,1 @@
+# openSUSE-riscv64-test-notes
