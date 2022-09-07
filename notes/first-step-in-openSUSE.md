@@ -44,99 +44,7 @@ qemu-system-riscv64: could not load kernel 'boot/u-boot.bin'
 
 回头查看发现之前执行的命令输出中存在error：
 ```bash
-aldehyde@ubuntu:~/openSUSE-riscv64$ virt-copy-out -a openSUSE-Tumbleweed-RISC-V-XFCE-efi.riscv64-2022.07.18-Build1.7.qcow2 /boot .
-libguestfs: trace: set_verbose true
-libguestfs: trace: set_verbose = 0
-libguestfs: create: flags = 0, handle = 0x55f694678ae0, program = virt-copy-out
-libguestfs: trace: set_pgroup true
-libguestfs: trace: set_pgroup = 0
-libguestfs: trace: add_drive "openSUSE-Tumbleweed-RISC-V-XFCE-efi.riscv64-2022.07.18-Build1.7.qcow2" "readonly:true"
-libguestfs: creating COW overlay to protect original drive content
-libguestfs: trace: get_tmpdir
-libguestfs: trace: get_tmpdir = "/tmp"
-libguestfs: trace: disk_create "/tmp/libguestfs3ESLY7/overlay1.qcow2" "qcow2" -1 "backingfile:/home/aldehyde/openSUSE-riscv64/openSUSE-Tumbleweed-RISC-V-XFCE-efi.riscv64-2022.07.18-Build1.7.qcow2"
-libguestfs: trace: disk_format "/home/aldehyde/openSUSE-riscv64/openSUSE-Tumbleweed-RISC-V-XFCE-efi.riscv64-2022.07.18-Build1.7.qcow2"
-libguestfs: command: run: qemu-img --help | grep -sqE -- '\binfo\b.*-U\b'
-libguestfs: command: run: qemu-img
-libguestfs: command: run: \ info
-libguestfs: command: run: \ -U
-libguestfs: command: run: \ --output json
-libguestfs: command: run: \ /home/aldehyde/openSUSE-riscv64/openSUSE-Tumbleweed-RISC-V-XFCE-efi.riscv64-2022.07.18-Build1.7.qcow2
-libguestfs: parse_json: qemu-img info JSON output:\n{\n    "virtual-size": 5377097728,\n    "filename": "/home/aldehyde/openSUSE-riscv64/openSUSE-Tumbleweed-RISC-V-XFCE-efi.riscv64-2022.07.18-Build1.7.qcow2",\n    "cluster-size": 65536,\n    "format": "qcow2",\n    "actual-size": 1841963008,\n    "format-specific": {\n        "type": "qcow2",\n        "data": {\n            "compat": "1.1",\n            "compression-type": "zlib",\n            "lazy-refcounts": false,\n            "refcount-bits": 16,\n            "corrupt": false,\n            "extended-l2": false\n        }\n    },\n    "dirty-flag": false\n}\n\n
-libguestfs: trace: disk_format = "qcow2"
-libguestfs: command: run: qemu-img
-libguestfs: command: run: \ create
-libguestfs: command: run: \ -f qcow2
-libguestfs: command: run: \ -o backing_file=/home/aldehyde/openSUSE-riscv64/openSUSE-Tumbleweed-RISC-V-XFCE-efi.riscv64-2022.07.18-Build1.7.qcow2,backing_fmt=qcow2
-libguestfs: command: run: \ /tmp/libguestfs3ESLY7/overlay1.qcow2
-Formatting '/tmp/libguestfs3ESLY7/overlay1.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=5377097728 backing_file=/home/aldehyde/openSUSE-riscv64/openSUSE-Tumbleweed-RISC-V-XFCE-efi.riscv64-2022.07.18-Build1.7.qcow2 backing_fmt=qcow2 lazy_refcounts=off refcount_bits=16
-libguestfs: trace: disk_create = 0
-libguestfs: trace: add_drive = 0
-libguestfs: trace: is_config
-libguestfs: trace: is_config = 1
-libguestfs: trace: launch
-libguestfs: trace: max_disks
-libguestfs: trace: max_disks = 255
-libguestfs: trace: version
-libguestfs: trace: version = <struct guestfs_version = major: 1, minor: 46, release: 2, extra: , >
-libguestfs: trace: get_backend
-libguestfs: trace: get_backend = "direct"
-libguestfs: launch: program=virt-copy-out
-libguestfs: launch: version=1.46.2
-libguestfs: launch: backend registered: unix
-libguestfs: launch: backend registered: uml
-libguestfs: launch: backend registered: libvirt
-libguestfs: launch: backend registered: direct
-libguestfs: launch: backend=direct
-libguestfs: launch: tmpdir=/tmp/libguestfs3ESLY7
-libguestfs: launch: umask=0002
-libguestfs: launch: euid=1000
-libguestfs: trace: get_cachedir
-libguestfs: trace: get_cachedir = "/var/tmp"
-libguestfs: begin building supermin appliance
-libguestfs: run supermin
-libguestfs: command: run: /usr/bin/supermin
-libguestfs: command: run: \ --build
-libguestfs: command: run: \ --verbose
-libguestfs: command: run: \ --if-newer
-libguestfs: command: run: \ --lock /var/tmp/.guestfs-1000/lock
-libguestfs: command: run: \ --copy-kernel
-libguestfs: command: run: \ -f ext2
-libguestfs: command: run: \ --host-cpu x86_64
-libguestfs: command: run: \ /usr/lib/x86_64-linux-gnu/guestfs/supermin.d
-libguestfs: command: run: \ -o /var/tmp/.guestfs-1000/appliance.d
-supermin: version: 5.2.1
-supermin: package handler: debian/dpkg
-supermin: acquiring lock on /var/tmp/.guestfs-1000/lock
-supermin: build: /usr/lib/x86_64-linux-gnu/guestfs/supermin.d
-supermin: reading the supermin appliance
-supermin: build: visiting /usr/lib/x86_64-linux-gnu/guestfs/supermin.d/base.tar.gz type gzip base image (tar)
-supermin: build: visiting /usr/lib/x86_64-linux-gnu/guestfs/supermin.d/daemon.tar.gz type gzip base image (tar)
-supermin: build: visiting /usr/lib/x86_64-linux-gnu/guestfs/supermin.d/excludefiles type uncompressed excludefiles
-supermin: build: visiting /usr/lib/x86_64-linux-gnu/guestfs/supermin.d/hostfiles type uncompressed hostfiles
-supermin: build: visiting /usr/lib/x86_64-linux-gnu/guestfs/supermin.d/init.tar.gz type gzip base image (tar)
-supermin: build: visiting /usr/lib/x86_64-linux-gnu/guestfs/supermin.d/packages type uncompressed packages
-supermin: build: visiting /usr/lib/x86_64-linux-gnu/guestfs/supermin.d/packages-hfsplus type uncompressed packages
-supermin: build: visiting /usr/lib/x86_64-linux-gnu/guestfs/supermin.d/packages-reiserfs type uncompressed packages
-supermin: build: visiting /usr/lib/x86_64-linux-gnu/guestfs/supermin.d/packages-xfs type uncompressed packages
-supermin: build: visiting /usr/lib/x86_64-linux-gnu/guestfs/supermin.d/udev-rules.tar.gz type gzip base image (tar)
-supermin: mapping package names to installed packages
-supermin: resolving full list of package dependencies
-supermin: build: 216 packages, including dependencies
-supermin: build: 8426 files
-supermin: build: 4965 files, after matching excludefiles
-supermin: build: 4968 files, after adding hostfiles
-supermin: build: 4965 files, after removing unreadable files
-supermin: build: 4971 files, after munging
-supermin: kernel: looking for kernel using environment variables ...
-supermin: kernel: looking for kernels in /lib/modules/*/vmlinuz ...
-supermin: kernel: looking for kernels in /boot ...
-supermin: kernel: kernel version of /boot/vmlinuz-5.15.0-41-generic = 5.15.0-41-generic (from filename)
-supermin: kernel: picked modules path /lib/modules/5.15.0-41-generic
-supermin: kernel: kernel version of /boot/vmlinuz-5.15.0-40-generic = 5.15.0-40-generic (from filename)
-supermin: kernel: picked modules path /lib/modules/5.15.0-40-generic
-supermin: kernel: picked vmlinuz /boot/vmlinuz-5.15.0-41-generic
-supermin: kernel: kernel_version 5.15.0-41-generic
+...
 supermin: kernel: modpath /lib/modules/5.15.0-41-generic
 cp: cannot open '/boot/vmlinuz-5.15.0-41-generic' for reading: Permission denied
 supermin: cp -p '/boot/vmlinuz-5.15.0-41-generic' '/var/tmp/.guestfs-1000/appliance.d.r5oo7k1s/kernel': command failed, see earlier errors
@@ -166,3 +74,30 @@ localhost:~ #
 ```
 
 todo: 如何运行用户界面？
+
+upd1:
+参考资料：[在 QEMU上的 openEuler RISC-V 中启动并测试 Xfce](https://github.com/isrc-cas/tarsier-oerv/tree/main/QA/Tests/Xfce)
+
+由于一些不可抗力原因，笔者又重新配置了一遍环境。。。而qemu的环境和上述链接中的准备阶段"1.编译支持视频输出的 qemu"内容一致。
+
+简单记录一下自己踩的坑：
+
+* > ERROR: unknown option -enable-sdl
+  *  `sudo apt install libsdl1.2-dev`
+* > ERROR: Cannot find Ninja
+  *  `sudo apt install ninja-build`
+* >ERROR: User requested feature opengl
+       configure was not able to find it.
+       Please install epoxy with EGL
+  * 前往https://github.com/anholt/libepoxy 下载源码并编译。可能需要安装额外的依赖：`sudo apt install meson libegl-mesa-dev`
+* >ERROR: Dependency "virglrenderer" not found, tried pkgconfig
+  * https://gitlab.freedesktop.org/virgl/virglrenderer  下载源码并编译。
+  * >fatal error: gbm.h: 没有那个文件或目录
+    * `sudo apt install libgbm-dev`,或者前往 https://github.com/robclark/libgbm 下载编译。
+* > ERROR: Dependency "sdl2" not found, tried pkgconfig and config-tool
+  * `sudo apt install libsdl2-dev`
+* >ERROR: Dependency "gtk+-3.0" not found, tried pkgconfig
+  * `sudo apt-get install libgtk-3-dev`
+
+至此即可编译。笔者的环境是Ubuntu22.04.1。当然笔者的环境也可以不自己编译qemu，直接在apt上拉取需要的qemu版本`sudo apt install qemu-system-misc`.（只是折腾了一下）
+也可以参考这篇教程：https://github.com/YunxiangLuo/testing/blob/main/Firefox/Firefox_installation_guide.md
